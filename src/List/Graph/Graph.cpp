@@ -2,6 +2,7 @@
 // Created by Olcay Taner YILDIZ on 8.05.2023.
 //
 
+#include <vector>
 #include "Graph.h"
 #include "../../Array/DisjointSet.h"
 #include "../Queue.h"
@@ -9,14 +10,15 @@
 
 namespace list {
 
-    Graph::Graph(int _vertexCount) : AbstractGraph(_vertexCount){
+    Graph::Graph(const std:: vector < std::string>& _vertices) : AbstractGraph(_vertices.size()){
+        vertices = _vertices;
         edges = new EdgeList[vertexCount];
-        for (int i = 0; i < vertexCount; i++) {
-            edges[i] = EdgeList();
-        }
+//        for (int i = 0; i < vertexCount; i++) {
+//            edges[i] = EdgeList();
+//        }
     }
 
-    void Graph::addEdge(int from, int to) {
+    void Graph::addEdge(const std:: string& from, string& to, const < std::string>& _vertices) {
         Edge* edge = new Edge(from, to, 1);
         edges[from].insert(edge);
     }
