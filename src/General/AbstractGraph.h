@@ -20,7 +20,6 @@ public:
     explicit AbstractGraph(int vertexCount);
     int connectedComponentDfs();
     int connectedComponentBfs();
-    void kruskal();
 };
 
 

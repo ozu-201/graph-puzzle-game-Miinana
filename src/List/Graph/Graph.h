@@ -12,14 +12,12 @@
 namespace list {
 
     class Graph : public AbstractGraph{
-    private:
-        Graph(const vector<std::string> &_vertices);
-
-        EdgeList *edges;
+    private: //private constructor takes vector as argument
+        EdgeList *edges; //pointer to edgelist
     public:
         explicit Graph(int vertexCount);
-        ~Graph();
-        void addEdge(string from, string to);
+        ~Graph(); //destructor
+        void addEdge(int from, int to);
         void addEdge(int from, int to, int weight);
         void connectedComponentsDisjointSet();
         Path* bellmanFord(int source);

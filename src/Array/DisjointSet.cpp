@@ -33,20 +33,6 @@ int DisjointSet::findSetIterative(int index) {
     return parent;
 }
 
-void DisjointSet::unionOfSets(int index1, int index2) {
-    int x = findSetIterative(index1);
-    int y = findSetIterative(index2);
-    if (sets[x].getDepth() < sets[y].getDepth()){
-        sets[x].setParent(y);
-    } else {
-        sets[y].setParent(x);
-        if (sets[x].getDepth() == sets[y].getDepth()){
-            sets[x].incrementDepth();
-        }
-    }
-
-}
-
 DisjointSet::DisjointSet(int count) {
     sets = new Set[count];
     for (int i = 0; i < count; i++){

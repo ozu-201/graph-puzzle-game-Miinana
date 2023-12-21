@@ -25,10 +25,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51a6eb65-8558-4fde-b790-8c91b202ec63" name="Changes" comment="Add Hoca lib">
+      <change afterPath="$PROJECT_DIR$/data/english-dictionary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/turkish-dictionary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Graph/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Graph/.idea/Graph.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Graph/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Graph/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Graph/main.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DartsGame/Element.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DartsGame/Element.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DartsGame/Queue.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DartsGame/Queue.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DartsGame/State.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DartsGame/State.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DartsGame/Test.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DisjointSet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array/DisjointSet.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/DisjointSet.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array/DisjointSet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/Graph/Graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array/Graph/Graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/Graph/Graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array/Graph/Graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/Hash.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array/Hash.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/Hash.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array/Hash.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/Element.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/Element.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/Evaluate.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/Stack.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/Stack.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/Token.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/Token.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array/MathematicalExpression/TokenType.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/General/AbstractGraph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/General/AbstractGraph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/General/AbstractGraph.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/General/AbstractGraph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/DoublyLinkedList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/DoublyLinkedList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Graph/Edge.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/Graph/Edge.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/List/Graph/Edge.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/Graph/Edge.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Graph/EdgeList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/Graph/EdgeList.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/List/Graph/Graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/Graph/Graph.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/List/Graph/Graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/Graph/Graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Hash.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/Hash.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Hash.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/Hash.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/LinkedList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/LinkedList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Polynomial/Polynomial.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Polynomial/Polynomial.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Polynomial/Term.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Polynomial/Term.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Polynomial/TermNode.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Polynomial/TermNode.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/List/Polynomial/TestPolynomial.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/AvlTree.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/AvlTree.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/AvlTreeNode.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/AvlTreeNode.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/BTree.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/BTree.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/BTreeNode.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tree/BTreeNode.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +121,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -99,11 +152,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Catch.TestLinkedList" />
       <item itemvalue="CMake Application.DartsGame" />
@@ -121,7 +169,9 @@
       <option name="presentableId" value="Default" />
       <updated>1702548936836</updated>
       <workItem from="1702548938020" duration="2173000" />
-      <workItem from="1702551640993" duration="1871000" />
+      <workItem from="1702551640993" duration="2001000" />
+      <workItem from="1703152127101" duration="145000" />
+      <workItem from="1703152366422" duration="6187000" />
     </task>
     <task id="LOCAL-00001" summary="Add Hoca lib">
       <option name="closed" value="true" />

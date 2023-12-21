@@ -47,19 +47,3 @@ int AbstractGraph::connectedComponentBfs() {
     delete[] visited;
     return component;
 }
-
-void AbstractGraph::kruskal() {
-    int edgeCount = 0, i, count;
-    DisjointSet sets = DisjointSet(vertexCount);
-    Edge* list = edgeList(count);
-    i = 0;
-    while (edgeCount < vertexCount - 1){
-        int fromNode = list[i].getFrom();
-        int toNode = list[i].getTo();
-        if (sets.findSetRecursive(fromNode) != sets.findSetRecursive(toNode)){
-            sets.unionOfSets(fromNode, toNode);
-            edgeCount++;
-        }
-        i++;
-    }
-}
