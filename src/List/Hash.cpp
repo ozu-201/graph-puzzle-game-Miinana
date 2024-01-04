@@ -36,4 +36,11 @@ namespace list {
         table[address].insertLast(node);
     }
 
+    void Hash::deleteValue(int value) {
+        int address;
+        if (search(value) != nullptr){
+            address = hashFunction(value);
+            table[address].deleteValue(value);
+        }
+    }
 }

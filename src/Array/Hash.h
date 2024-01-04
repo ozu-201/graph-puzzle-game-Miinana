@@ -21,6 +21,7 @@ namespace array {
         ~Hash();
         Element* search(int value);
         void insert(int value);
+        void deleteValue(int value);
     };
 
 }

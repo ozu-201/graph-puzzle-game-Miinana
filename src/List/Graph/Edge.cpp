@@ -14,7 +14,7 @@ Edge::Edge(int from, int to, int weight) {
 void Edge::setNext(Edge *_next) {
     next = _next;
 }
-//next
+
 Edge *Edge::getNext() const{
     return next;
 }

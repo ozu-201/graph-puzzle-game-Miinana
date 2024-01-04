@@ -12,11 +12,11 @@
 namespace list {
 
     class Graph : public AbstractGraph{
-    private: //private constructor takes vector as argument
-        EdgeList *edges; //pointer to edgelist
+    private:
+        EdgeList *edges;
     public:
         explicit Graph(int vertexCount);
-        ~Graph(); //destructor
+        ~Graph();
         void addEdge(int from, int to);
         void addEdge(int from, int to, int weight);
         void connectedComponentsDisjointSet();

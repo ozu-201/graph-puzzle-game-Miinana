@@ -2,7 +2,6 @@
 // Created by Olcay Taner YILDIZ on 8.05.2023.
 //
 
-#include <vector>
 #include "Graph.h"
 #include "../../Array/DisjointSet.h"
 #include "../Queue.h"
@@ -10,15 +9,14 @@
 
 namespace list {
 
-    Graph::Graph(const std:: vector < std::string>& _vertices) : AbstractGraph(_vertices.size()){
-        vertices = _vertices;
-        edges = new EdgeList[vertexCount]; //creat an array of edge lıst for each vertex
-//        for (int i = 0; i < vertexCount; i++) {
-//            edges[i] = EdgeList();
-//        }
+    Graph::Graph(int _vertexCount) : AbstractGraph(_vertexCount){
+        edges = new EdgeList[vertexCount];
+        for (int i = 0; i < vertexCount; i++) {
+            edges[i] = EdgeList();
+        }
     }
-//add edges between vertexes
-    void Graph::addEdge(const std:: string& from, string& to, const < std::string>& _vertices) {
+
+    void Graph::addEdge(int from, int to) {
         Edge* edge = new Edge(from, to, 1);
         edges[from].insert(edge);
     }
@@ -27,11 +25,11 @@ namespace list {
         Edge* edge = new Edge(from, to, weight);
         edges[from].insert(edge);
     }
-//destructor
+
     Graph::~Graph() {
         delete[] edges;
     }
-//fınd conectıon between them
+
     void Graph::connectedComponentsDisjointSet() {
         Edge* edge;
         int toNode;
@@ -75,6 +73,98 @@ namespace list {
                 if (!visited[toNode]){
                     visited[toNode] = true;
                     queue.enqueue(new Node(toNode));
+                }
+                edge = edge->getNext();
+            }
+        }
+    }
+
+    Path *Graph::bellmanFord(int source) {
+        Edge* edge;
+        Path* shortestPaths = initializePaths(source);
+        for (int i = 0; i < vertexCount - 1; i++){
+            for (int fromNode = 0; fromNode < vertexCount; fromNode++){
+                edge = edges[fromNode].getHead();
+                while (edge != nullptr){
+                    int toNode = edge->getTo();
+                    int newDistance = shortestPaths[fromNode].getDistance() + edge->getWeight();
+                    if (newDistance < shortestPaths[toNode].getDistance()){
+                        shortestPaths[toNode].setDistance(newDistance);
+                        shortestPaths[toNode].setPrevious(fromNode);
+                    }
+                    edge = edge->getNext();
+                }
+            }
+        }
+        return shortestPaths;
+    }
+
+    Path *Graph::dijkstra(int source) {
+        Edge* edge;
+        Path* shortestPaths = initializePaths(source);
+        MinHeap heap = MinHeap(vertexCount);
+        for (int i = 0; i < vertexCount; i++){
+            heap.insert(HeapNode(shortestPaths[i].getDistance(), i));
+        }
+        while (!heap.isEmpty()){
+            HeapNode node = heap.deleteTop();
+            int fromNode = node.getName();
+            edge = edges[fromNode].getHead();
+            while (edge != nullptr){
+                int toNode = edge->getTo();
+                int newDistance = shortestPaths[fromNode].getDistance() + edge->getWeight();
+                if (newDistance < shortestPaths[toNode].getDistance()){
+                    int position = heap.search(toNode);
+                    heap.update(position, newDistance);
+                    shortestPaths[toNode].setDistance(newDistance);
+                    shortestPaths[toNode].setPrevious(fromNode);
+                }
+                edge = edge->getNext();
+            }
+        }
+        return shortestPaths;
+    }
+
+    Edge *Graph::edgeList(int& edgeCount) {
+        Edge* list;
+        edgeCount = 0;
+        for (int i = 0; i < vertexCount; i++){
+            Edge* edge = edges[i].getHead();
+            while (edge != nullptr){
+                edgeCount++;
+                edge = edge->getNext();
+            }
+        }
+        list = new Edge[edgeCount];
+        int index = 0;
+        for (int i = 0; i < vertexCount; i++){
+            Edge* edge = edges[i].getHead();
+            while (edge != nullptr){
+                list[index] = Edge(edge->getFrom(), edge->getTo(), edge->getWeight());
+                index++;
+                edge = edge->getNext();
+            }
+        }
+        return list;
+    }
+
+    void Graph::prim() {
+        Path* paths = initializePaths(0);
+        MinHeap heap = MinHeap(vertexCount);
+        for (int i = 0; i < vertexCount; i++){
+            heap.insert(HeapNode(paths[i].getDistance(), i));
+        }
+        while (!heap.isEmpty()){
+            HeapNode node = heap.deleteTop();
+            int fromNode = node.getName();
+            Edge* edge = edges[fromNode].getHead();
+            while (edge != nullptr){
+                int toNode = edge->getTo();
+                if (paths[toNode].getDistance() > edge->getWeight()){
+                    int position = heap.search(toNode);
+                    heap.update(position, edge->getWeight());
+                    paths[toNode].setDistance(edge->getWeight());
+                    paths[toNode].setPrevious(fromNode);
                 }
                 edge = edge->getNext();
             }

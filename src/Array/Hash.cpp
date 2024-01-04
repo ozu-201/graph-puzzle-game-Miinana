@@ -48,4 +48,16 @@ namespace array {
         table[address] = new Element(value);
     }
 
+    void Hash::deleteValue(int value) {
+        int address;
+        address = hashFunction(value);
+        while (table[address] != nullptr){
+            if (!deleted[address] && table[address]->getData() == value){
+                break;
+            }
+            address = (address + 1) % N;
+        }
+        deleted[address] = true;
+    }
+
 }

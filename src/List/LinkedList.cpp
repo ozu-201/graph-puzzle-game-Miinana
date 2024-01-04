@@ -17,6 +17,20 @@ void LinkedList::insertFirst(Node *newNode) {
     head = newNode;
 }
 
+void LinkedList::insertLast(Node *newNode) {
+    if (isEmpty()) {
+        head = newNode;
+    } else {
+        tail->setNext(newNode);
+    }
+    tail = newNode;
+}
+
+void LinkedList::insertMiddle(Node *newNode, Node *previous) {
+    newNode->setNext(previous->getNext());
+    previous->setNext(newNode);
+}
+
 Node *LinkedList::search(int value) {
     Node *tmp = head;
     while (tmp != nullptr) {
@@ -26,6 +40,29 @@ Node *LinkedList::search(int value) {
         tmp = tmp->getNext();
     }
     return nullptr;
+}
+
+Node *LinkedList::getNodeI(int i) {
+    Node *tmp = head;
+    int index = 0;
+    while (tmp != nullptr) {
+        if (index == i) {
+            return tmp;
+        }
+        index++;
+        tmp = tmp->getNext();
+    }
+    return nullptr;
+}
+
+int LinkedList::numberOfElements() {
+    Node *tmp = head;
+    int count = 0;
+    while (tmp != nullptr) {
+        count++;
+        tmp = tmp->getNext();
+    }
+    return count;
 }
 
 LinkedList::~LinkedList() {
@@ -57,6 +94,17 @@ void LinkedList::deleteFirst() {
     delete tmp;
 }
 
+void LinkedList::deleteLast() {
+    Node *toBeDeleted = tail;
+    tail = getPrevious(tail);
+    if (tail != nullptr){
+        tail->setNext(nullptr);
+    } else {
+        head = nullptr;
+    }
+    delete toBeDeleted;
+}
+
 Node *LinkedList::getPrevious(Node *node) {
     Node *tmp = head;
     Node *previous = nullptr;
@@ -67,10 +115,40 @@ Node *LinkedList::getPrevious(Node *node) {
     return previous;
 }
 
+void LinkedList::deleteMiddle(Node *node) {
+    Node* previous;
+    previous = getPrevious(node);
+    previous->setNext(node->getNext());
+    delete node;
+}
+
 bool LinkedList::isEmpty() {
     return head == nullptr;
 }
 
 Node *LinkedList::getHead() {
     return head;
+}
+
+void LinkedList::deleteValue(int value) {
+    Node *tmp = head;
+    Node *previous = nullptr;
+    while (tmp != nullptr) {
+        if (tmp->getData() == value){
+            if (previous != nullptr){
+                previous->setNext(tmp->getNext());
+                if (tmp->getNext() == nullptr){
+                    tail = previous;
+                }
+            } else {
+                head = tmp->getNext();
+                if (head == nullptr){
+                    tail = nullptr;
+                }
+            }
+            break;
+        }
+        previous = tmp;
+        tmp = tmp->getNext();
+    }
 }

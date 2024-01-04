@@ -20,6 +20,7 @@ namespace list {
         Node* search(int value);
         void insert(int value);
         void insert(Node* node);
+        void deleteValue(int value);
     };
 
 }
