@@ -36,11 +36,13 @@ int AbstractGraph::connectedComponentDfs() {
 
 int AbstractGraph::connectedComponentBfs() {
     int component = 0;
+    int targetNode = 0;
     bool* visited = new bool[vertexCount];
     for (int vertex = 0; vertex < vertexCount; vertex++){
         if (!visited[vertex]){
             visited[vertex] = true;
             breadthFirstSearch(visited, vertex);
+            breadthFirstSearch(visited, vertex, targetNode);
             component++;
         }
     }

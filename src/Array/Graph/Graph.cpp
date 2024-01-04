@@ -10,6 +10,7 @@
 #include "../Heap/Heap.h"
 #include "../Heap/MinHeap.h"
 
+
 namespace array {
 
     Graph::Graph(int vertexCount) : AbstractGraph(vertexCount) {
@@ -67,7 +68,7 @@ namespace array {
         int fromNode;
         int targetNode;
         if (startNode == -1 || endNode == -1) {
-            std::cout << "Start or end word not found in the dictionary." << std::endl;
+            std::cout << "Cant find Start or end word ." << std::endl;
             delete[] visited;
             return;
         }
@@ -93,133 +94,134 @@ namespace array {
                     }
                 }
             }
-
-            Path *Graph::bellmanFord(int source) {
-                Path *shortestPaths = initializePaths(source);
-                for (int i = 0; i < vertexCount - 1; i++) {
-                    for (int fromNode = 0; fromNode < vertexCount; fromNode++) {
-                        for (int toNode = 0; toNode < vertexCount; toNode++) {
-                            int newDistance = shortestPaths[fromNode].getDistance() + edges[fromNode][toNode];
-                            if (newDistance < shortestPaths[toNode].getDistance()) {
-                                shortestPaths[toNode].setDistance(newDistance);
-                                shortestPaths[toNode].setPrevious(fromNode);
-                            }
-                        }
-                    }
-                }
-                return shortestPaths;
-            }
         }
-        Path *Graph::dijkstra(int source, int startWord, int endWord) {
+    }
 
-            Path *shortestPaths = initializePaths(source);
-            MinHeap heap = MinHeap(vertexCount);
-            for (int i = 0; i < vertexCount; i++) {
-                heap.insert(HeapNode(shortestPaths[i].getDistance(), i));
-            }
-            while (!heap.isEmpty()) {
-                HeapNode node = heap.deleteTop();
-                int fromNode = node.getName();
+    Path *Graph::bellmanFord(int source) {
+        Path *shortestPaths = initializePaths(source);
+        for (int i = 0; i < vertexCount - 1; i++) {
+            for (int fromNode = 0; fromNode < vertexCount; fromNode++) {
                 for (int toNode = 0; toNode < vertexCount; toNode++) {
                     int newDistance = shortestPaths[fromNode].getDistance() + edges[fromNode][toNode];
                     if (newDistance < shortestPaths[toNode].getDistance()) {
-                        int position = heap.search(toNode);
-                        heap.update(position, newDistance);
                         shortestPaths[toNode].setDistance(newDistance);
                         shortestPaths[toNode].setPrevious(fromNode);
+                    }
+                }
+            }
+        }
+        return shortestPaths;
+    }
 
-                        if (toNode == endNode) {
-                            std::cout << "Shortest path found: ";
-                            printPath(shortestPaths, source, endNode);
-                            return;
+    Path *Graph::dijkstra(int startWord, int endWord) {
+        Path* shortestPaths = initializePaths(startWord);
+        int* visited;
+
+        if (startWord == -1 || endWord == -1) {
+            std::cerr << "Cant find Start or end word " << std::endl;
+            delete visited;
+            return nullptr;
+        }
+
+        Queue queue = Queue(100);
+        queue.enqueue(Element(startWord));
+        visited[startWord] = true;
+
+        while (!queue.isEmpty()) {
+            int fromNode = queue.dequeue().getData();
+
+            for (int toNode = 0; toNode < vertexCount; toNode++) {
+                if (edges[fromNode][toNode] > 0) {
+                    if (!visited[toNode]) {
+                        visited[toNode] = true;
+                        queue.enqueue(Element(toNode));
+                        std::cout << visited [toNode] << " <- ";  // Print the path
+                        if (toNode == endWord) {
+                            std::cout << "Found the end word!" << std::endl;
+                            delete[] visited;
+
                         }
                     }
                 }
             }
-            std::cout << "Cant find End word" << std::endl;
         }
+        std::cout << "End word not found." << std::endl;
+        delete[] visited;
 
-        void Graph::printPath(Path *shortestPaths, int source, int endNode) {
-            if (endNode == source) {
-                std::cout << words[source] << std::endl;
-                return;
+    }
+
+
+    int **Graph::floydWarshall() {
+        int **distances;
+        distances = new int *[vertexCount];
+        for (int i = 0; i < vertexCount; i++) {
+            distances[i] = new int[vertexCount];
+            for (int j = 0; j < vertexCount; j++) {
+                distances[i][j] = edges[i][j];
             }
-
-            printPath(shortestPaths, source, shortestPaths[endNode].getPrevious());
-            std::cout << words[endNode] << " <- ";
         }
-    }
-}
-
-return
-shortestPaths;
-
-
-}
-
-int **Graph::floydWarshall() {
-    int **distances;
-    distances = new int *[vertexCount];
-    for (int i = 0; i < vertexCount; i++) {
-        distances[i] = new int[vertexCount];
-        for (int j = 0; j < vertexCount; j++) {
-            distances[i][j] = edges[i][j];
+        for (int k = 0; k < vertexCount; k++) {
+            for (int i = 0; i < vertexCount; i++) {
+                for (int j = 0; j < vertexCount; j++) {
+                    int newDistance = distances[i][k] + distances[k][j];
+                    if (newDistance < distances[i][j]) {
+                        distances[i][j] = newDistance;
+                    }
+                }
+            }
         }
+        return distances;
     }
-    for (int k = 0; k < vertexCount; k++) {
+
+    Edge *Graph::edgeList(int &edgeCount) {
+        Edge *list;
+        edgeCount = 0;
         for (int i = 0; i < vertexCount; i++) {
             for (int j = 0; j < vertexCount; j++) {
-                int newDistance = distances[i][k] + distances[k][j];
-                if (newDistance < distances[i][j]) {
-                    distances[i][j] = newDistance;
+                if (edges[i][j] > 0) {
+                    edgeCount++;
+                }
+            }
+        }
+        list = new Edge[edgeCount];
+        int index = 0;
+        for (int i = 0; i < vertexCount; i++) {
+            for (int j = 0; j < vertexCount; j++) {
+                if (edges[i][j] > 0) {
+                    list[index] = Edge(i, j, edges[i][j]);
+                    index++;
+                }
+            }
+        }
+        return list;
+    }
+
+    void Graph::prim() {
+        Path *paths = initializePaths(0);
+        MinHeap heap = MinHeap(vertexCount);
+        for (int i = 0; i < vertexCount; i++) {
+            heap.insert(HeapNode(paths[i].getDistance(), i));
+        }
+        while (!heap.isEmpty()) {
+            HeapNode node = heap.deleteTop();
+            int fromNode = node.getName();
+            for (int toNode = 0; toNode < vertexCount; toNode++) {
+                if (paths[toNode].getDistance() > edges[fromNode][toNode]) {
+                    int position = heap.search(toNode);
+                    heap.update(position, edges[fromNode][toNode]);
+                    paths[toNode].setDistance(edges[fromNode][toNode]);
+                    paths[toNode].setPrevious(fromNode);
                 }
             }
         }
     }
-    return distances;
-}
 
-Edge *Graph::edgeList(int &edgeCount) {
-    Edge *list;
-    edgeCount = 0;
-    for (int i = 0; i < vertexCount; i++) {
-        for (int j = 0; j < vertexCount; j++) {
-            if (edges[i][j] > 0) {
-                edgeCount++;
-            }
-        }
-    }
-    list = new Edge[edgeCount];
-    int index = 0;
-    for (int i = 0; i < vertexCount; i++) {
-        for (int j = 0; j < vertexCount; j++) {
-            if (edges[i][j] > 0) {
-                list[index] = Edge(i, j, edges[i][j]);
-                index++;
-            }
-        }
-    }
-    return list;
-}
+    void Graph::breadthFirstSearch(bool *visited, int startNode) {
 
-void Graph::prim() {
-    Path *paths = initializePaths(0);
-    MinHeap heap = MinHeap(vertexCount);
-    for (int i = 0; i < vertexCount; i++) {
-        heap.insert(HeapNode(paths[i].getDistance(), i));
     }
-    while (!heap.isEmpty()) {
-        HeapNode node = heap.deleteTop();
-        int fromNode = node.getName();
-        for (int toNode = 0; toNode < vertexCount; toNode++) {
-            if (paths[toNode].getDistance() > edges[fromNode][toNode]) {
-                int position = heap.search(toNode);
-                heap.update(position, edges[fromNode][toNode]);
-                paths[toNode].setDistance(edges[fromNode][toNode]);
-                paths[toNode].setPrevious(fromNode);
-            }
-        }
+
+    void Graph::printPath(Path *shortestPaths, int source, int endNode) {
+
     }
-}
 
 }

@@ -79,7 +79,7 @@ int main() {
 
     //Get the target word
     std::string endWord;
-    std::cout << "Enter the first word";
+    std::cout << "Enter the end word";
     std::cin >> endWord;
 
     //creat a vector

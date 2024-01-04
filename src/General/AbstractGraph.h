@@ -13,7 +13,9 @@ class AbstractGraph {
 protected:
     int vertexCount;
     virtual void depthFirstSearch(bool* visited, int fromNode) = 0;
+    virtual void breadthFirstSearch(bool* visited, int startNode) = 0;
     virtual void breadthFirstSearch(bool* visited, int startNode, int endNode) = 0;
+    virtual void printPath(Path *shortestPaths, int source, int endNode) = 0;
     virtual Edge* edgeList(int& edgeCount) = 0;
     Path* initializePaths(int source) const;
 public:
